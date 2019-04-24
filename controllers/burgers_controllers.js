@@ -16,6 +16,7 @@ router.get("/", function(req, res) {
       res.render("index", hbsObject);
     });
   });
+
 //Adding new burger to db.
   router.post("/api/burgers", function(req, res) {
      // console.log("hhhhheeeeeyyyyyy", req.body.burger_name)
@@ -34,6 +35,7 @@ router.get("/", function(req, res) {
   
     console.log("condition", condition);
   
+    //updating devoured row
     burgers.updateOne({
       devoured: req.body.devoured
     }, 

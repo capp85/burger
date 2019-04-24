@@ -1,6 +1,6 @@
 // Make sure we wait to attach our handlers until the DOM is fully loaded.
 $(function() {
-    
+
    // Add a new burger.
    $(".create-form").on("submit", function(event) {
     event.preventDefault();
@@ -20,7 +20,7 @@ $(function() {
         location.reload();
     });
 });
-
+    //Devour burger 
     $(".eatburger").on("click", function(event) {
         event.preventDefault();
 
@@ -35,6 +35,7 @@ $(function() {
             data: devouredState
         }).then(function() {
             console.log("Burger devoured");
+            //Reloads the page with updated devoured burgers
             location.reload();
         });
     });
