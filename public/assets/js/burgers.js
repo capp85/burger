@@ -1,27 +1,27 @@
 // Make sure we wait to attach our handlers until the DOM is fully loaded.
-$(function() {
+$(function () {
 
-   // Add a new burger.
-   $(".create-form").on("submit", function(event) {
-    event.preventDefault();
+    // Add a new burger.
+    $(".create-form").on("submit", function (event) {
+        event.preventDefault();
 
-    var newBurger = {
-        burger_name: $("#newburger").val().trim(),
-        devoured: 0
-    };
+        var newBurger = {
+            burger_name: $("#newburger").val().trim(),
+            devoured: 0
+        };
 
-    // Send the POST request.
-    $.ajax("/api/burgers", {
-        type: "POST",
-        data: newBurger
-    }).then(function() {
-        console.log("Added new burger");
-        // Reload the page to get the updated burger list.
-        location.reload();
+        // Send the POST request.
+        $.ajax("/api/burgers", {
+            type: "POST",
+            data: newBurger
+        }).then(function () {
+            console.log("Added new burger");
+            // Reload the page to get the updated burger list.
+            location.reload();
+        });
     });
-});
     //Devour burger 
-    $(".eatburger").on("click", function(event) {
+    $(".eatburger").on("click", function (event) {
         event.preventDefault();
 
         var id = $(this).data("id");
@@ -33,15 +33,30 @@ $(function() {
         $.ajax("/api/burgers/" + id, {
             type: "PUT",
             data: devouredState
-        }).then(function() {
+        }).then(function () {
             console.log("Burger devoured");
             //Reloads the page with updated devoured burgers
             location.reload();
         });
     });
-    
- 
-   
 
-   
+    $(".delete").on("click", function(event) {
+        var id = $(this).data("id");
+
+        $.ajax("/api/burgers/" + id, {
+            type: "DELETE"
+        }).then(
+            function() {
+                console.log("burger was deleted.");
+
+                location.reload();
+            }
+        );
+    });
+
+
+
+
+
+
 })

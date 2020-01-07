@@ -11,7 +11,7 @@
     </div>
 
     <br>
-{{!-- burgers that are ready to eat with devour button --}}
+    {{!-- burgers that are ready to eat with devour button --}}
     <div class="row">
         <div class="col-sm-6">
 
@@ -38,7 +38,7 @@
                 {{/each}}
             </ul>
         </div>
-{{!-- burgers that have been eaten --}}
+        {{!-- burgers that have been eaten --}}
         <div class="col-sm-6" id="eaten">
 
             <h2>Burgers That Have Been Eaten!</h2>
@@ -48,6 +48,14 @@
             <li>
                 {{this.id}}
                 {{this.burger_name}}
+
+                <form>
+
+                <button class="delete btn-primary" id="delete"  data-id="{{this.id}}" data-newDevoured="{{devour}}" type="submit">
+                    Delete Burger
+                </button>
+
+                </form>
 
             </li>
             {{/if}}
